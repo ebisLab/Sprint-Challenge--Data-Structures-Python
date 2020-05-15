@@ -19,10 +19,26 @@ class Node:
 class RingBuffer:
     def __init__(self, capacity):
         self.capacity = capacity
+        self.ring_buffer = None
         self.size = 0
 
     def append(self, item):
-        pass
+        if self.size < self.capacity:
+            if self.ring_buffer:
+                self.size += 1  # increment
+                self.ring_buffer.set_next(Node(item))
+                self.ring_buffer = self.ring_buffer.next
+            else:
+                self.ring_buffer = Node(item)
+                self.end = self.ring_buffer
+        else:
+            self.ring_buffer.next_node.set_next(item)
+            self.ring_buffer = self.ring_buffer.next_node
 
     def get(self):
-        pass
+        arr = []
+        for i in range(self.size):
+            # push to arr
+            arr.append(self.end.get_value())
+            self.new_tail = self.new_tail.next
+        return arr
