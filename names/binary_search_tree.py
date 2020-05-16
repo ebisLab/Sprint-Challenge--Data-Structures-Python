@@ -62,6 +62,7 @@ class BSTNode:
             return self.right.contains(target)
 
     # Return the maximum value found in the tree
+
     def get_max(self):
         # we'll
         if not self.right:
@@ -116,7 +117,6 @@ class BSTNode:
 
 # Breadth --- first in firsto out ordering
 # iteratively
-
 
     def breadth_first_for_each(self, fn):
         queue = deque()
